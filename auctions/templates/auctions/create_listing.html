@@ -1,0 +1,32 @@
+{% extends "auctions/layout.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+<div class="container">
+    <h2 class="text-center p-4">Create New Listing</h2>
+
+    <form class="px-5" action="{% url 'create_listing' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12 pb-4">
+                {{ form.title | as_crispy_field }}
+            </div>
+            <div class="col-12 pb-4">
+                {{ form.description | as_crispy_field }}
+            </div>
+            <div class="col-6 pb-4">
+                {{ form.starting_price | as_crispy_field }}
+            </div>
+            <div class="col-6 pb-4">
+                {{ form.category | as_crispy_field }}
+            </div>
+            <div class="col-12 pb-4">
+                <label for="image_url">Image URL <span id="password-label">(optional)</span></label>
+                {{ form.image_url | as_crispy_field }}
+            </div>
+        <input class="w-100 btn btn-primary btn-lg mt-2 mb-2" type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}
+

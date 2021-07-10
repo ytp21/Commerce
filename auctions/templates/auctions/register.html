@@ -1,0 +1,87 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="container">
+    <h2 class="text-center p-4">Sign Up</h2>
+
+    {% if message %}
+            <div class="alert alert-danger d-flex align-items-center alert-dismissable fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                {{ message }}
+                <button type="button" class="btn-close" style="margin-left: auto; margin-right: 5px;" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+    {% endif %}
+
+    <form class="px-5" action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-6 pb-4">
+                <label for="firstName" class="form-label">First name</label>
+                <input class="form-control {% if 'invalid_firstName' in error %} invalid-message-input {% endif %}" autofocus type="text" value ="{{ typed_firstName }}" name="first_name" placeholder="First name">
+                {% if 'invalid_firstName' in error %}
+                <div class="invalid-message font-weight-bold">
+                    Valid first name is required (alphabet "a-z/A-Z" and maximum {{ max_name }} characters).
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-6 pb-4">
+                <label for="lastName" class="form-label">Last name</label>
+                <input class="form-control {% if 'invalid_lastName' in error %} invalid-message-input {% endif %}" type="text" value ="{{ typed_lastName }}" name="last_name" placeholder="Last name">
+                {% if 'invalid_lastName' in error  %}
+                <div class="invalid-message font-weight-bold">
+                    Valid last name is required (alphabet "a-z/A-Z" and maximum {{ max_name }} characters).
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-12 pb-4" >
+                <label for="username" class="form-label">Username</label>
+                <input class="form-control {% if 'invalid_username' in error or 'username_exists' in error %} invalid-message-input {% endif %}" type="text" value ="{{ typed_username }}" name="username" placeholder="Username">
+                {% if 'invalid_username' in error  %}
+                <div class="invalid-message font-weight-bold">
+                    Username with maximum length of {{ max_username }} is required. (alphabet "case-insensitive" ; hyphen "-" ; underscore "_" ; dot ".") 
+                </div>
+                {% endif %}
+                {% if 'username_exists' in error  %}
+                <div class="invalid-message font-weight-bold">
+                    Username already taken.
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-12 pb-4">  
+                <label for="email" class="form-label">Email</label>
+                <input class="form-control {% if 'invalid_email' in error or 'email_exists' in error %} invalid-message-input {% endif %}" type="email" value ="{{ typed_email }}" name="email" placeholder="you@example.com">
+                {% if 'invalid_email' in error %}
+                <div class="invalid-message font-weight-bold">
+                    Please enter a valid email address with maximum length of {{ max_email }}
+                </div>
+                {% endif %}
+                {% if 'email_exists' in error  %}
+                <div class="invalid-message font-weight-bold">
+                    Email address has already registered.
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-6">
+                <label for="password" class="form-label">Password <span id="password-label">(min of {{ min_password }} characters)</span></label>
+                <input class="form-control {% if 'invalid_password' in error or 'passwordTooShort' in error or message %} invalid-message-input {% endif %}" type="password" name="password" placeholder="Password">
+                {% if 'invalid_password' in error  %}
+                <div class="invalid-message font-weight-bold">
+                    Password invalid. (alphabet "a-z/A-Z" and .-_$@!~&) 
+                </div>
+                {% endif %}
+                {% if 'passwordTooShort' in error  %}
+                <div class="invalid-message font-weight-bold">
+                    Password is less than {[ min_password ]} characters.
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-6">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input class="form-control {% if message %} invalid-message-input {% endif %}" type="password" name="confirmation" placeholder="Confirm Password">
+            </div>
+            <input class="w-100 btn btn-primary btn-lg mt-4 mb-2" type="submit" value="Register">
+        </div>
+    </form>
+    <p class="text-center">Already have an account? <a href="{% url 'login' %}">Log In here.</a></p>
+</div>
+{% endblock %} 

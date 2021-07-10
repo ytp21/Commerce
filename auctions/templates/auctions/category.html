@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+
+{% load humanize %}
+
+{% block body %}
+<div class="container">
+    <div class="row text-center">
+        <h2 class="mt-5">All Categories</h2>
+        {% for categoryType in all_categories %}
+        <div class="col-lg-4 col-md-6 col-sm-6 mt-5">
+            <a href="{% url 'category' cat=categoryType.category %}" class="text-decoration-none">
+                <div class="card flex-row" style="height: 100px;">
+                    <img class="card-img-left example-card-img-responsive" style="height: 100px; width: 150px;" src="{{ categoryType.image_url }}"/>
+                    <div class="w-100 d-flex justify-content-center align-items-center">
+                        <h4 class="mx-3" style="color: black;">{{ categoryType.category }}</h4>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

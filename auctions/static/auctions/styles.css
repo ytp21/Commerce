@@ -1,0 +1,544 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+/* CSS for layout */
+
+.b-example-divider {
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.form-control-white:focus {
+  border-color: #ffae00;
+  box-shadow: 0 0 0 .15rem #ffae00;
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.text-small {
+  font-size: 85%;
+}
+
+.dropdown-toggle {
+  outline: 0;
+}
+
+#button-colour {
+  background-image: linear-gradient(#ffffff, #ffc400);
+}
+
+#button-colour:hover {
+  background-image: linear-gradient(#ffe3a6dc, #ffae00d8);
+}
+
+#button-colour:active {
+  background-image: none;
+  background-color: #ffa600;
+  box-shadow: 0 0 0 .15rem #fff8e8;
+  transition: 0s;
+}
+
+.round-box {
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+
+.round-box:hover {
+  border-radius: 5px;
+  border: 1px solid white;
+}
+
+.navbar-style {
+  height: 40px;
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.logo-name {
+  margin-left: 10px;
+  margin-right: 20px;
+  margin-top: auto;
+  margin-bottom: 5px;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.logo-name:hover {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 650px) {
+  .header-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* CSS for login */
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15vh;
+  position: relative;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* CSS for register */
+
+.invalid-message {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: .875em;
+  color: #dc3545;
+}
+
+.invalid-message-input {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + .75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(.375em + .1875rem) center;
+  background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+#password-label {
+  font-size: 12px;
+}
+
+/* CSS for create listing */
+.asteriskField {
+  display: none;
+}
+
+/* CSS for index.html */
+.bid-price {
+  font-size: 20px;
+  color: green;
+}
+
+.current-price {
+  font-size: 20px;
+  color: blue;
+}
+
+.closed-status {
+  font-size: 20px;
+  color: rgb(255, 19, 19);
+}
+
+.success-status {
+  font-size: 20px;
+}
+
+.datetime-tooltips {
+  text-decoration: none;
+}
+
+.datetime-tooltips {
+  z-index: 2; /* making datetime-tooltips viable with stretched link */
+  position: relative; 
+}
+
+#cards_landscape_wrap-2{
+  text-align: center;
+}
+
+#cards_landscape_wrap-2 a{
+  text-decoration: none;
+  outline: none;
+}
+
+#cards_landscape_wrap-2 .card-flyer {
+  border-radius: 5px;
+}
+
+#cards_landscape_wrap-2 .card-flyer .image-box{
+  background: #ffffff;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+#cards_landscape_wrap-2 .card-flyer .image-box img{
+  -webkit-transition:all .9s ease; 
+  -moz-transition:all .9s ease; 
+  -o-transition:all .9s ease;
+  -ms-transition:all .9s ease; 
+  width: 100%;
+  height: 300px;
+}
+
+#cards_landscape_wrap-2 .card-flyer:hover .image-box img{
+  opacity: 0.7;
+  -webkit-transform:scale(1.15);
+  -moz-transform:scale(1.15);
+  -ms-transform:scale(1.15);
+  -o-transform:scale(1.15);
+  transform:scale(1.15);
+}
+
+#cards_landscape_wrap-2 .card-flyer .text-box{
+  text-align: center;
+}
+
+#cards_landscape_wrap-2 .card-flyer .text-box .text-container{
+  padding: 30px 18px;
+}
+
+#cards_landscape_wrap-2 .card-flyer{
+  background: #FFFFFF;
+  margin-top: 50px;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.40);
+}
+
+#cards_landscape_wrap-2 .card-flyer:hover{
+  background: #fff;
+  box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  margin-top: 50px;
+}
+
+#cards_landscape_wrap-2 .card-flyer .text-box p{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 0px; 
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #000000;
+}
+
+#cards_landscape_wrap-2 .card-flyer .text-box h6{
+  margin-top: 0px;
+  margin-bottom: 4px; 
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Black', sans-serif;
+  letter-spacing: 1px;
+  color: #00acc1;
+}
+
+@media (min-width: 768px) {
+  .w-md-50{width:50% !important;}
+}
+@media (min-width: 992px) {
+  .w-lg-75{width:75% !important;}
+}
+
+.card-footer{
+  padding: 15px; 
+  border-top: 1px solid #ddd;
+}
+
+.card-footer:after, .card-footer:before{
+  content:'';
+  display:table;
+}
+
+.card-footer:after{
+  clear:both;
+}
+
+.card-footer .wcf-right{
+  float:right;
+}
+
+a.buy-btn{
+  display:block;
+  color:#000000;
+  text-align:center;
+  font-size: 18px;
+  width:42px;
+  height:42px;
+  line-height:35px;
+  border-radius:50%;
+  border:1px solid #000000;
+  transition: all 0.2s ease-in-out;
+}
+
+a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus, .watchlist{
+  border-color: #FF9800 !important;
+  background: #FF9800;
+  color: #fff !important;
+  text-decoration:none;
+}
+
+/* CSS for listing.html */
+
+.minheight {
+  min-height:500px;
+}
+
+#myTab .active {
+  border-top: 5px solid grey;
+  border-radius: 5px;
+}
+
+#myTab li:hover {
+  background: lightgrey;
+  border-radius: 5px;
+}
+
+.background-item-theme {
+  background-color: white !important;
+  border-radius: 10px;
+}
+
+.background-tab-theme {
+  background-color: white !important;
+}
+
+.wrap-context {
+  width: 100% !important;
+  word-wrap: break-word !important;
+}
+
+.wrap-context p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.listing-watchlist-btn {
+  background-color: rgb(255, 209, 83);
+  width: 210px;
+  height: 40px;
+  border-radius: 5px;
+  color: black;
+  padding: 6px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  padding-left: 16px;
+}
+
+.listing-watchlist-btn:hover {
+  background-color: rgb(255, 168, 37);
+  color: black;
+  transition: 0.2s;
+}
+
+.listing-watchlist-btn:active {
+  box-shadow: 0px 0px 2px 4px rgb(255, 201, 119);
+  transition: 0s;
+}
+
+.watched {
+  background-color: rgb(255, 153, 0);
+  color: black;
+}
+
+.listing-title {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.starting-price-font {
+  font-size: 14px;
+  color: rgb(0, 135, 180);
+}
+
+.starting-bid-font {
+  font-size: 24px;
+  color: rgb(0, 135, 180);
+}
+
+.current-bid-font1 {
+  font-size: 24px;
+  color: rgb(180, 30, 30);
+}
+
+.current-bid-font2 {
+  font-size: 15px;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  bottom: 7px;
+}
+
+.current-bid-font3 {
+  font-size: 14px;
+  color: black;
+}
+
+.number-of-bidder {
+  font-size: 14px;
+  color: black;
+  position: relative;
+  left: 93px;
+}
+
+.description-font {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.bidding-status1 {
+  font-size: 15px;
+  color: black;
+  font-weight: bold;
+}
+
+.bidding-status-active {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(39, 209, 39);
+}
+
+.bidding-status-closed {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(255, 19, 19);
+}
+
+.current-bid-label {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.listing hr {
+  color: rgba(196, 193, 193, 0.897);
+}
+
+.btn-dark:hover {
+  background-color: rgb(85, 85, 85)!important;
+  border-color: rgb(85, 85, 85)!important;
+}
+
+.deactivate-btn {
+  background-color: rgb(194, 0, 0);
+  width: 210px;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  padding: 8px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.deactivate-btn:hover {
+  background-color: rgb(255, 35, 35);
+  color: white;
+  transition: 0.2s;
+}
+
+.deactivate-btn:active {
+  box-shadow: 0px 0px 2px 4px rgb(255, 134, 134);
+  transition: 0s;
+}
+
+.activate-btn {
+  background-color: rgb(1, 100, 1);
+  width: 210px;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  padding: 8px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.activate-btn:hover {
+  background-color: rgb(59, 158, 59);
+  color: white;
+  transition: 0.2s;
+}
+
+.activate-btn:active {
+  box-shadow: 0px 0px 2px 4px rgb(117, 218, 117);
+  transition: 0s;
+}
+
+.wrap-description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 67px;
+}
+
+.font-size td, .font-size{
+  font-size: 14.5px;
+}
+
+.comment-form {
+  background-color: #F0F0F0;
+  border-radius: 10px;
+}
+
+.comment {
+  background-color: #F0F0F0;
+  border-radius: 10px;
+}
+
+.comment-title {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.comment-content {
+  font-size: 15px;
+}
+
+.comment-datetime {
+  font-size: 12px;
+  color: blue;
+}
+
+.middle-dot {
+position: relative; 
+font-size: 30px; 
+top: 5px;
+}
+
+.commenter {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(82, 82, 82);
+}

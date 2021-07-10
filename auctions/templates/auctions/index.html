@@ -1,0 +1,97 @@
+{% extends "auctions/layout.html" %}
+
+{% load humanize %}
+
+<!-- Credit to Donhovann Zamora on the frontend design, source "https://codepen.io/donhovanndesign" -->
+{% block body %}
+
+<div class="container">
+    {% if active_listing or closed_listing %}
+    <!-- Dropdown option for activelisting -->
+    <div class="d-flex flex-row justify-content-end mt-4 mb-n2">
+        <div class="dropdown ">
+            <a class="btn btn-outline-dark btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                {% if active_listing %}
+                    Sort by - Active Listing
+                {% elif closed_listing %}
+                    Sort by - Closed Listing
+                {% endif %}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="{% url 'index' %}">Active Listing</a></li>
+                <li><a class="dropdown-item" href="{% url 'closed_listing' %}">Closed Listing</a></li>
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if mylisting %}
+        <!-- My Listing title for my listing page-->
+        <h2 class="mt-5 text-center">My Listing</h2>
+    {% endif %}
+
+    {% if cat_dropdown %}
+    <!-- Category Dropdown for category page -->
+    <div class="d-flex flex-row justify-content-end mt-4 mb-n2">
+        <div class="dropdown ">
+            <a class="btn btn-outline-dark btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Sort by (Category) - {{ category }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                {% for category in categoryType %}
+                <li><a class="dropdown-item" href="{% url 'category' cat=category %}">{{ category }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if watchlist %}
+    <!-- Watchlist title for watchlist page-->
+        <h2 class="mt-5 text-center">My Watchlist</h2>
+    {% endif %}
+
+    <div id="cards_landscape_wrap-2">
+        <div class="row">
+            {% for listing in all_listing %}
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4" > 
+                <a href="{% url 'listing' pk=listing.pk %}">
+                    <div class="card-flyer">
+                        <div class="text-box">
+                            <div class="image-box">
+                                <img class="card-img-top img-fluid text-center" src="{{ listing.image_url }}" onerror="this.src='https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg';" alt="Card image cap"/>
+                            </div>
+                            <div class="text-container wrap-context">
+                                <h5 class="mb-2">{{ listing }}</h5>
+                                <p class="wrap-description my-3">{{ listing.description }}</p>
+                                <p style="height: 28px;"><small class="text-muted">Created <a class="datetime-tooltips" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ listing.date_creation }}">{{ listing.date_creation | naturaltime }}</a> by {{ listing.creator }}</small></p>
+                            </div>
+                            <div class="card-footer">
+                                {% if listing.pk in ID_with_bid and active_listing is True %}
+                                    {% for bid in listing_with_bid %}
+                                        {% if bid.listing.pk == listing.pk %}
+                                            <p class="float-start fw-bold">Current Bid: <span class="bid-price">${{ bid.current_bid }}</span></p>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% elif active_listing is True %}
+                                    <p class="float-start fw-bold">Starting Price: <span class="current-price">${{ listing.starting_price }}</span></p>
+                                {% elif closed_listing is True %}
+                                    {% if user.is_authenticated and user == listing.buyer %}
+                                        <p class="float-start fw-bold success-status">You've won the Bid</p>
+                                    {% else %}
+                                        <p class="float-start fw-bold closed-status">Closed</p>
+                                    {% endif %}
+                                {% endif %}
+                                <div class="wcf-right"><a href="{% url 'watchlist_button' view='activePage' pk=listing.pk %}" class="buy-btn {% if user in listing.watcher.all %} watchlist {% endif %}"><i class="bi bi-bookmarks" ></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

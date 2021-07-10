@@ -1,0 +1,108 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Auctions{% endblock %}</title>
+        <link class="icon" rel="icon" type="image/png" href="{% static 'auctions/Auction.png' %}">
+
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'auctions/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'auctions/bootstrap-responsive.min.css' %}" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+            }
+        }
+        </style>
+
+        <!-- Custom styles for this template -->
+        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <script src="{% static 'auctions/bootstrap.bundle.min.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $('#myTab button').click(function (e) {
+                e.preventDefault();
+                
+                //removing active class from other tab
+                $("#myTab .active").removeClass("active");
+            
+                //adding active class to current clicked tab
+                $(this).parent().addClass("active");
+            });
+        </script>   
+    </head>
+
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </symbol>
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </symbol>
+        </svg>
+        <header class="pt-2 pb-2 bg-dark text-white"> 
+            <div class="container-fluid">
+                <div class="d-flex flex-wrap flex-row align-items-center justify-content-between">
+                    <div class="header-center">
+                        <ul class="nav ms-2">
+                            <img class="logo" src="{% static 'auctions/Auction.png' %}">
+                            <a href="{% url 'index' %}" class="logo-name">eBid</a>
+                            <li><a href="{% url 'index' %}" class="nav-link px-2 text-white round-box">Active Listing</a></li>
+                            <li><a href="{% url 'category' cat='allCatogories' %}" class="nav-link px-2 text-white round-box">Category</a></li>
+                            {% if user.is_authenticated %}
+                            <li><a href="{% url 'create_listing' %}" class="nav-link px-2 text-white round-box">Create Listing</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class="dropdown text-end header-center d-flex flex-row pe-3">
+                        <a href="" class="d-block link-light text-decoration-none dropdown-toggle ms-4" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong>{{ user.first_name }} {{ user.last_name }}</strong>
+                        </a>
+                        <ul class="dropdown-menu text-small mt-2" aria-labelledby="dropdownUser1">
+                            <li><a class="dropdown-item" href="{% url 'my_listing' %}">My Listing</a></li>
+                            <li><a class="dropdown-item" href="{% url 'watchlist' %}">Watchlist</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <form class="text-end header-center">
+                        <button formaction="{% url 'login' %}" type="submit" class="btn btn-outline-light ms-4 me-2">Login</button>
+                        <button formaction="{% url 'register' %}" type="submit" class="btn btn-warning me-n2" id="button-colour">Register</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        <main>
+                {% block body %}
+                {% endblock %}
+        </main>
+
+
+
+        <script>
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        </script>
+
+        
+    </body>
+</html>

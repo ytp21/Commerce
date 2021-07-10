@@ -1,0 +1,14 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="container">
+
+            {% for bid in category %}
+
+                <h2 class="text-center p-4">{% if bid.listing.id == 1 %}yes{% else %}no{% endif %}</h2>
+            {% endfor %}
+
+    <h2 class="text-center p-4">{{ category }}</h2>
+
+</div>
+{% endblock %}
